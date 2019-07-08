@@ -1,0 +1,8 @@
+virtualvenvs_comandos.txt
+*.txt~
+db.sqlite3
+*.py~
+__pycache__
+bin
+include
+lib
