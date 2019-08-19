@@ -1,3 +1,7 @@
+<!--<p>{% load static %}
+<link rel= "styleesheet"
+type= "text/css" href="{ % static 'preguntas/style.css' %}" ></p>-->
+
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
@@ -5,5 +9,5 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No preguntas are available.</p>
 {% endif %}

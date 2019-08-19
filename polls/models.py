@@ -1,27 +1,27 @@
-#agregado2
 import datetime
-
 from django.db import models
-#agregado2
 from django.utils import timezone
 
-# Create your models here.
 class Question(models.Model):
-    question_text = models.CharField(max_length=100)
-    pub_date = models.DateTimeField('Fech de Publicación')
+    #quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions')
+    question_text = models.CharField('Question,question_text', max_length=100)
+    #guarda pub_date con tiempo para que views.py devuelva las ultimas 5 declarado en class IdexView
+    pub_date = models.DateTimeField('Fecha de Publicación models.py')
     #agregado1
     def __str__(self):
         return self.question_text
-    #agregado2
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=100)
-    votes = models.IntegerField(default=0)
-    #correcto = models.BooleanField(default=False)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)####, related_name='answers')
+    choice_text = models.CharField('Answer', max_length=100)
+    #votes = models.IntegerField(default=0)
+    #votes ahora es respuesta y siempre sera false a menos que se cambie en otro codigo
+    respuesta = models.BooleanField('Correct answer, classChoice,respuesta', default=False)
+    #op_correcta = models.BooleanField('Correct answer', default=False)
     #agregado1
     def __str__(self):
         return self.choice_text
+
 
